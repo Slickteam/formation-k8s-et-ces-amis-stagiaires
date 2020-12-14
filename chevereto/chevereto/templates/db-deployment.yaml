@@ -1,0 +1,34 @@
+{{- if ne .Values.env "PROD" }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: db
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: db
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_DATABASE
+          value: chevereto
+        - name: MYSQL_PASSWORD
+          value: chevereto
+        - name: MYSQL_ROOT_PASSWORD
+          value: chevereto_root
+        - name: MYSQL_USER
+          value: chevereto
+        image: mariadb
+        name: db
+      restartPolicy: Always
+{{- end }}

@@ -1,0 +1,6 @@
+nodePort: 30002
+env: PROD
+db:
+  ip: 192.168.1.29
+  port: 32772
+host: "chevereto.172.23.0.3.nip.io"

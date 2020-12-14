@@ -1,0 +1,14 @@
+{{- if eq .Values.env "PROD" }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+ name: chevereto-images-pvc
+ labels:
+   app: chevereto-images
+spec:
+ accessModes:
+   - ReadWriteOnce
+ resources:
+   requests:
+     storage: 100Mi
+{{- end }}

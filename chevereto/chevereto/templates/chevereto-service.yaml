@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: chevereto
+  name: chevereto
+spec:
+  ports:
+  - port: 80
+  {{- if ne .Values.env "PROD" }}
+    nodePort: {{ .Values.nodePort }}
+  type: NodePort
+  {{- end }}
+  selector:
+    app: chevereto
