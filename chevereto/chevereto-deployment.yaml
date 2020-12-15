@@ -28,10 +28,28 @@ spec:
           value: chv_
         - name: CHEVERETO_DB_USERNAME
           value: chevereto
-        image: nmtan/chevereto
+        image: nmtan/chevereto:1.1.0
         name: chevereto
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+        securityContext:
+          readOnlyRootFilesystem: false
+      #    runAsUser: 12000
+          runAsGroup: 32999
+        livenessProbe:
+          tcpSocket:
+            port: 80
+        readinessProbe:
+          httpGet:
+            port: 80
         volumeMounts:
         - mountPath: /var/www/html/images
           name: chevereto-images
