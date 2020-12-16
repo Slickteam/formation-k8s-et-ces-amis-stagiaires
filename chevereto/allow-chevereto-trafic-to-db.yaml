@@ -13,3 +13,5 @@ spec:
       - podSelector:
           matchLabels:
             app: db
+      ports:
+        - port: 3306

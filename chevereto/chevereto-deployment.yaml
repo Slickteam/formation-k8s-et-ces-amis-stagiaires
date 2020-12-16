@@ -16,6 +16,8 @@ spec:
       labels:
         app: chevereto
     spec:
+      securityContext: {}
+        
       containers:
       - env:
         - name: CHEVERETO_DB_HOST
@@ -41,8 +43,8 @@ spec:
             memory: "512Mi"
             cpu: "1"
         securityContext:
+          allowPrivilegeEscalation: false
           readOnlyRootFilesystem: false
-      #    runAsUser: 12000
           runAsGroup: 32999
         livenessProbe:
           tcpSocket:

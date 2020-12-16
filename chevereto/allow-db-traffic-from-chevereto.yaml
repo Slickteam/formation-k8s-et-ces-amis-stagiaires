@@ -5,11 +5,11 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app: chevereto
-  policyTypes:
-  - Egress
-  egress:
-  - to:
+      app: db
+  ingress:
+  - from:
     - podSelector:
         matchLabels:
-          app: db
+          app: chevereto
+    ports:
+      - port: 3306
