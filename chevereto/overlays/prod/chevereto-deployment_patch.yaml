@@ -8,6 +8,8 @@ spec:
       app: chevereto
   template:
     spec:
+      securityContext:
+        fsGroup: 33
       containers:
       - image: nmtan/chevereto
         name: chevereto
