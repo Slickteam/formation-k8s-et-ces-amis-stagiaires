@@ -16,6 +16,8 @@ spec:
       labels:
         app: db
     spec:
+      securityContext:
+        fsGroup: 33
       containers:
       - env:
         - name: MYSQL_DATABASE
