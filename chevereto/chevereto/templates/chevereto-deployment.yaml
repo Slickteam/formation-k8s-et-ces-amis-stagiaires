@@ -16,6 +16,8 @@ spec:
       labels:
         app: chevereto
     spec:
+      securityContext:
+        fsGroup: 33
       containers:
       - env:
         - name: CHEVERETO_DB_HOST
